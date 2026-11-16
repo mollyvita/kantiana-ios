@@ -1,0 +1,27 @@
+name: Kantiana
+options:
+  bundleIdPrefix: ru.mollyvita
+  deploymentTarget:
+    iOS: "17.0"
+packages:
+  KantianaKit:
+    path: .
+targets:
+  Kantiana:
+    type: application
+    platform: iOS
+    sources: [App]
+    dependencies:
+      - package: KantianaKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ru.mollyvita.kantiana
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Kantiana
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGNING_ALLOWED: NO

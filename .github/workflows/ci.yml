@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  kit-linux:
+    runs-on: ubuntu-latest
+    container: swift:6.0
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift build
+      - run: swift test
+  app-ios:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - run: xcodegen generate
+      - run: xcodebuild -project Kantiana.xcodeproj -scheme Kantiana -destination 'generic/platform=iOS Simulator' -skipPackagePluginValidation build | tail -40
+        shell: bash -o pipefail {0}
